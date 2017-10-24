@@ -4,19 +4,6 @@ import { HttpClient } from '@angular/common/http';
 import 'rxjs/add/operator/map'
 import {Movie} from '../movie';
 
-const MOVIES: Movie[] = [
-  { id: 1, name: 'Mr. Nice' },
-  { id: 2, name: 'Narco' },
-  { id: 3, name: 'Bombasto' },
-  { id: 4, name: 'Celeritas' },
-  { id: 5, name: 'Magneta' },
-  { id: 6, name: 'RubberMan' },
-  { id: 7, name: 'Dynama' },
-  { id: 8, name: 'Dr IQ' },
-  { id: 9, name: 'Magma' },
-  { id: 10, name: 'Tornado' }
-];
-
 @Component({
     selector: 'list-movie-root',
     templateUrl:'./list-movie.component.html',
@@ -30,8 +17,14 @@ export class ListMovieComponent implements OnInit{
   constructor(private http: HttpClient) {}
 
   ngOnInit(): void {
-    this.movies = MOVIES;
+    const url = 'http://localhost:8080/cinema/api/film';
+    this.http.get(url).subscribe((movies: Movie[])  => {
+      this.movies = movies;
+      // console.log(this.movies);
+    });
   }  
+
+  
 
 }
 

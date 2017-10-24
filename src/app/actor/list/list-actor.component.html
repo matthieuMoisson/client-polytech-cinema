@@ -1,13 +1,20 @@
-
 <div class="container">
-  <h2>Liste des acteurs</h2>
-  <br>
-  <div class="row">
-    <div class="col-md-4" *ngFor="let actor of actors">
-      <img class="rounded-circle" src="/assets/img/user.jpg" width="140" height="140">
-      <h2>{{actor.firstName}} {{actor.name}}</h2>
-      <p>{{actor.description}}</p>
-      <p><a class="btn btn-secondary" href="#" role="button">View details »</a></p>
-    </div><!-- /.col-lg-4 -->
-  </div>
+  <h2>Liste des acteurs</h2>          
+  <table class="table table-striped">
+    <thead>
+      <tr>
+        <th>Nom</th>
+        <th>Prenom</th>
+        <th></th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let actor of actors">
+        <td>{{actor.firstName}}</td>
+        <td>{{actor.name}}</td>
+        <td><a class="btn btn-secondary" href="#" role="button">View details »</a></td>
+      </tr>
+    </tbody>
+  </table>
 </div>
+  

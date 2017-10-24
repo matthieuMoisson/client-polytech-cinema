@@ -3,7 +3,7 @@ import { BrowserModule } from '@angular/platform-browser';
 import { FormsModule }   from '@angular/forms'; 
 import { HttpClientModule } from '@angular/common/http';
 
-
+import {NgbModule} from '@ng-bootstrap/ng-bootstrap';
 
 import { AppComponent }  from './app.component';
 import { ListMovieComponent } from './movie/list/list-movie.component';
@@ -15,6 +15,8 @@ import { FormActorComponent } from './actor/form/form-actor.component';
     BrowserModule,
     FormsModule,
     HttpClientModule,
+    NgbModule,
+    NgbModule.forRoot(),
   ],
   declarations: [
     AppComponent,

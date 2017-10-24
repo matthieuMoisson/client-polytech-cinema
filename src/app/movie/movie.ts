@@ -1,4 +1,10 @@
 export class Movie {
     id: number;
-    name: string;
+    budget: number;
+    duration: number;
+    grossing: number;
+    releaseDate: string;
+    title: string;
+//    director: Director;
+//    category: Category;
 }

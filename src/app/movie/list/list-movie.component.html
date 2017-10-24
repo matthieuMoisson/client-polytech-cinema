@@ -1,12 +1,20 @@
 <div class="container">
-    <h2>Liste des films</h2>
-    <br>
-    <div class="row">
-      <div class="col-md-4" *ngFor="let movie of movies">
-        <h2>Nom : {{movie.name}}</h2>
-        <p>Description : {{movie.description}}</p>
-        <p><a class="btn btn-secondary" href="#" role="button">View details »</a></p>
-      </div><!-- /.col-lg-4 -->
-    </div>
-  </div>
+  <h2>Liste des films</h2>          
+  <table class="table table-striped">
+    <thead>
+      <tr>
+        <th>Titre</th>
+        <th>Budget</th>
+        <th></th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let movie of movies">
+        <td>{{movie.title}}</td>
+        <td>{{movie.budget}} euros</td>
+        <td><a class="btn btn-secondary" href="#" role="button">View details »</a></td>
+      </tr>
+    </tbody>
+  </table>
+</div>
   

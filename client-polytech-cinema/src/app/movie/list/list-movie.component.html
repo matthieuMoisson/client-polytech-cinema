@@ -1,0 +1,12 @@
+<div class="container">
+    <h2>Liste des films</h2>
+    <br>
+    <div class="row">
+      <div class="col-md-4" *ngFor="let movie of movies">
+        <h2>Nom : {{movie.name}}</h2>
+        <p>Description : {{movie.description}}</p>
+        <p><a class="btn btn-secondary" href="#" role="button">View details »</a></p>
+      </div><!-- /.col-lg-4 -->
+    </div>
+  </div>
+  

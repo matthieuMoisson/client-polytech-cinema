@@ -1,4 +1,4 @@
-export class Actor {
+export class Director {
     id: number;
     birthday: string;
     deathDate: string;

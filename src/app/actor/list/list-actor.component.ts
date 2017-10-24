@@ -17,7 +17,7 @@ export class ListActorComponent implements OnInit {
     actors: Actor[];
 
     constructor(private http: HttpClient) {
-
+      
     }
 
     results: string[];

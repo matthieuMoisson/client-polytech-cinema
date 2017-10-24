@@ -9,13 +9,14 @@ import { AppComponent }  from './app.component';
 import { ListMovieComponent } from './movie/list/list-movie.component';
 import { ListActorComponent } from './actor/list/list-actor.component';
 import { FormActorComponent } from './actor/form/form-actor.component';
+import { FormMovieComponent } from './movie/form/form-movie.component';
+import {NgbdModalContent } from './app.component';
 
 @NgModule({
   imports: [
     BrowserModule,
     FormsModule,
     HttpClientModule,
-    NgbModule,
     NgbModule.forRoot(),
   ],
   declarations: [
@@ -23,8 +24,11 @@ import { FormActorComponent } from './actor/form/form-actor.component';
     ListMovieComponent,
     ListActorComponent,
     FormActorComponent,
+    FormMovieComponent,
+    NgbdModalContent
   ],
   providers: [ ],
-  bootstrap: [ AppComponent ]
+  bootstrap: [ AppComponent ],
+  entryComponents:[ NgbdModalContent]
 })
 export class AppModule { }

@@ -9,14 +9,14 @@
         <a class="nav-link dropdown-toggle" href="http://example.com" id="dropdown01" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">Actors</a>
         <div class="dropdown-menu" aria-labelledby="dropdown01">
           <a class="dropdown-item" (click)="onSelect(1)" href="#">List</a>
-          <a class="dropdown-item" (click)="onSelect(2)" href="#">Add</a>
+          <a class="dropdown-item" (click)="open('actor')" href="#">Add</a>
         </div>
       </li>
       <li class="nav-item dropdown show">
         <a class="nav-link dropdown-toggle" href="http://example.com" id="dropdown01" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">Movies</a>
         <div class="dropdown-menu" aria-labelledby="dropdown01">
           <a class="dropdown-item" (click)="onSelect(2)" href="#">List</a>
-          <a class="dropdown-item" (click)="onSelect(4)" href="#">Add</a>
+          <a class="dropdown-item" (click)="open('movie')" href="#">Add</a>
         </div>
       </li>
     </ul>
@@ -26,25 +26,7 @@
 <br><br><br>
 <list-actor-root *ngIf="listActorSelected"></list-actor-root>
 <list-movie-root *ngIf="listMovieSelected"></list-movie-root>
-<div class="container" *ngIf="homeSelected">
-  <button class="btn btn-lg btn-outline-primary" (click)="open(content)">Launch demo modal</button>
-</div>
-
-
-<ng-template #content let-c="close" let-d="dismiss">
-  <div class="modal-header">
-    <h4 class="modal-title">Modal title</h4>
-    <button type="button" class="close" aria-label="Close" (click)="d('Cross click')">
-      <span aria-hidden="true">&times;</span>
-    </button>
-  </div>
-  <div class="modal-body">
-    <p>One fine body&hellip;</p>
-  </div>
-  <div class="modal-footer">
-    <button type="button" class="btn btn-outline-dark" (click)="c('Close click')">Close</button>
-  </div>
-</ng-template>
+<div class="container" *ngIf="homeSelected"></div>
 
 <br>
 <div class="container">

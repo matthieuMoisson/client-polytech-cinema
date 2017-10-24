@@ -1,6 +1,32 @@
 import {Component, Input} from '@angular/core';
 
-import {NgbModal, ModalDismissReasons} from '@ng-bootstrap/ng-bootstrap';
+import {NgbModal, NgbActiveModal} from '@ng-bootstrap/ng-bootstrap';
+
+@Component({
+  selector: 'ngbd-modal-content',
+  template: `
+    <div class="modal-header">
+    <h4 *ngIf="type == 'actor'" class="modal-title">Formulaire acteur</h4>
+    <h4 *ngIf="type == 'movie'" class="modal-title">Formulaire film</h4>
+
+      <button type="button" class="close" aria-label="Close" (click)="activeModal.dismiss('Cross click')">
+        <span aria-hidden="true">&times;</span>
+      </button>
+    </div>
+    <div class="modal-body">
+      <form-actor-root id="1" *ngIf="type == 'actor'"></form-actor-root>
+      <form-movie-root id="2" *ngIf="type == 'movie'"></form-movie-root>
+    </div>
+    <div class="modal-footer">
+      <button type="button" class="btn btn-outline-dark" (click)="activeModal.close('Close click')">Close</button>
+    </div>
+  `
+})
+export class NgbdModalContent {
+  @Input() type;
+
+  constructor(public activeModal: NgbActiveModal) {}
+}
 
 @Component({
     selector: 'app-root',
@@ -8,31 +34,14 @@ import {NgbModal, ModalDismissReasons} from '@ng-bootstrap/ng-bootstrap';
     styleUrls: ['./app.component.css']
 })
 
-
 export class AppComponent {
 
-  closeResult: string;
+  constructor(private modalService: NgbModal) {}
   
-    constructor(private modalService: NgbModal) {}
-  
-    open(content) {
-      this.modalService.open(content).result.then((result) => {
-        this.closeResult = `Closed with: ${result}`;
-      }, (reason) => {
-        this.closeResult = `Dismissed ${this.getDismissReason(reason)}`;
-      });
-    }
-  
-    private getDismissReason(reason: any): string {
-      if (reason === ModalDismissReasons.ESC) {
-        return 'by pressing ESC';
-      } else if (reason === ModalDismissReasons.BACKDROP_CLICK) {
-        return 'by clicking on a backdrop';
-      } else {
-        return  `with: ${reason}`;
-      }
-    }
-
+  open(type) {
+    const modalRef = this.modalService.open(NgbdModalContent);
+    modalRef.componentInstance.type = type;
+  }
 
   listActorSelected: boolean = false;
   listMovieSelected: boolean = false;

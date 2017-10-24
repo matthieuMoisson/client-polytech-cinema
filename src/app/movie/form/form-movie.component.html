@@ -1,0 +1,36 @@
+<div *ngIf="movie">
+    <div class="form-group row">
+        <label for="example-text-input" class="col-2 col-form-label">Titre</label>
+        <div class="col-10">
+            <input class="form-control" type="text" [(ngModel)]="movie.title" id="example-text-input">
+        </div>
+    </div>
+    <div class="form-group row">
+        <label for="example-date-input" class="col-2 col-form-label">Date</label>
+        <div class="col-10">
+            <input class="form-control" type="date" [(ngModel)]="movie.releaseDate" id="example-date-input">
+        </div>
+    </div>
+    <div class="form-group row">
+        <label for="example-text-input" class="col-2 col-form-label">Budget</label>
+        <div class="col-10">
+            <input class="form-control" type="number" [(ngModel)]="movie.budget" id="example-number-input">
+        </div>
+    </div>
+    <div class="form-group row">
+        <label for="example-text-input" class="col-2 col-form-label">Durée</label>
+        <div class="col-10">
+            <input class="form-control" type="number" [(ngModel)]="movie.duration" id="example-number-input">
+        </div>
+    </div>
+    <div class="form-group row">
+        <label for="example-text-input" class="col-2 col-form-label">Chiffres d'affaire</label>
+        <div class="col-10">
+            <input class="form-control" type="number" [(ngModel)]="movie.grossing" id="example-number-input">
+        </div>
+    </div>
+    
+    
+    
+    
+</div>

@@ -29,5 +29,21 @@
             <input class="form-control" type="number" [(ngModel)]="movie.grossing" id="example-number-input">
         </div>
     </div>
+    <div class="form-group row">
+        <label for="example-text-input" class="col-2 col-form-label">Directeur</label>
+        <div class="col-10">
+            <select class="form-control" required [(ngModel)]="movie.director.id" name="director">
+                <option *ngFor="let director of directors" [value]="director.id">{{ director.firstName }} {{ director.name }}</option>
+            </select>
+        </div>
+    </div>
+    <div class="form-group row">
+        <label for="example-text-input" class="col-2 col-form-label">Categorie</label>
+        <div class="col-10">
+            <select class="form-control" required [(ngModel)]="movie.category.code" name="category">
+                <option *ngFor="let category of categories" [value]="category.code">{{ category.name }}</option>
+            </select>
+        </div>
+    </div>
     <button type="button" class="btn btn-primary pull pull-right" (click)="valider()">Valider</button>
 </div>

@@ -8,7 +8,7 @@
     <div class="form-group row">
         <label for="example-text-input" class="col-2 col-form-label">Film</label>
         <div class="col-10">
-            <select class="form-control"  id="movie" required [(ngModel)]="character.idMovie" name="movie">
+            <select class="form-control" required [(ngModel)]="character.idFilm" name="movie">
                 <option *ngFor="let movie of movies" [value]="movie.id">{{ movie.title }}</option>
             </select>
         </div>
@@ -16,7 +16,7 @@
     <div class="form-group row">
         <label for="example-text-input" class="col-2 col-form-label">Actor</label>
         <div class="col-10">
-            <select class="form-control"  id="actor" required [(ngModel)]="character.idActor" name="actor">
+            <select class="form-control" required [(ngModel)]="character.idActor" name="actor">
                 <option *ngFor="let actor of actors" [value]="actor.id">{{ actor.firstName }} {{ actor.name }}</option>
             </select>
         </div>

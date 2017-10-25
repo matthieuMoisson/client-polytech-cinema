@@ -32,6 +32,7 @@ export class FormCharacterComponent implements OnInit {
 
         if(this.id == 0){ //C'est un ajout donc on n'a pas besoin de charger la personne
             this.character = new Character();
+            
         }else{
             const url = 'http://localhost:8080/cinema/api/character/'+ this.id;
             this.http.get(url).subscribe((character: Character)  => {

@@ -1,0 +1,5 @@
+Le formulaire d'un nouveau personnage ne marche pas
+
+l'envoie d'une formulaire ne marche pas
+
+supprimer de la liste dinamiquement quand la suppression est ok

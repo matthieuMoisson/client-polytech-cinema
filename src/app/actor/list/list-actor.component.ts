@@ -4,6 +4,9 @@ import { HttpClient } from '@angular/common/http';
 import 'rxjs/add/operator/map';
 import {Actor} from '../actor';
 
+import {NgbModal, NgbActiveModal} from '@ng-bootstrap/ng-bootstrap';
+
+import { NgbdModalContent } from '../../ngbd-modal-content';
 
 @Component({
     selector: 'list-actor-root',
@@ -16,7 +19,7 @@ import {Actor} from '../actor';
 export class ListActorComponent implements OnInit {
     actors: Actor[];
 
-    constructor(private http: HttpClient) {
+    constructor(private http: HttpClient, private modalService: NgbModal) {
       
     }
 
@@ -25,9 +28,25 @@ export class ListActorComponent implements OnInit {
       const url = 'http://localhost:8080/cinema/api/actor';
       this.http.get(url).subscribe((actors: Actor[])  => {
         this.actors = actors;
-        // console.log(this.actors);
       });
     }
+
+    edit(id) {
+      const modalRef = this.modalService.open(NgbdModalContent);
+      modalRef.componentInstance.type = "actor";
+      modalRef.componentInstance.id = id;
+    }
+
+    delete(id) {
+      //const url = 'http://localhost:8080/cinema/api/actor/' + id;
+      //this.http.delete(url).subscribe();
+
+      console.log("DELETE");
+      let url = 'http://localhost:8080/cinema/api/actor/' + id;
+      this.http.delete(url).subscribe(res => console.log(res));
+    }
+
+    
 }
 
 

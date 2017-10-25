@@ -1,32 +1,7 @@
 import {Component, Input} from '@angular/core';
-
 import {NgbModal, NgbActiveModal} from '@ng-bootstrap/ng-bootstrap';
 
-@Component({
-  selector: 'ngbd-modal-content',
-  template: `
-    <div class="modal-header">
-    <h4 *ngIf="type == 'actor'" class="modal-title">Formulaire acteur</h4>
-    <h4 *ngIf="type == 'movie'" class="modal-title">Formulaire film</h4>
-
-      <button type="button" class="close" aria-label="Close" (click)="activeModal.dismiss('Cross click')">
-        <span aria-hidden="true">&times;</span>
-      </button>
-    </div>
-    <div class="modal-body">
-      <form-actor-root id="1" *ngIf="type == 'actor'"></form-actor-root>
-      <form-movie-root id="2" *ngIf="type == 'movie'"></form-movie-root>
-    </div>
-    <div class="modal-footer">
-      <button type="button" class="btn btn-outline-dark" (click)="activeModal.close('Close click')">Close</button>
-    </div>
-  `
-})
-export class NgbdModalContent {
-  @Input() type;
-
-  constructor(public activeModal: NgbActiveModal) {}
-}
+import { NgbdModalContent } from './ngbd-modal-content';
 
 @Component({
     selector: 'app-root',
@@ -41,24 +16,60 @@ export class AppComponent {
   open(type) {
     const modalRef = this.modalService.open(NgbdModalContent);
     modalRef.componentInstance.type = type;
+    modalRef.componentInstance.id = 0;
   }
 
   listActorSelected: boolean = false;
   listMovieSelected: boolean = false;
+  listDirectorSelected: boolean = false;
+  listCharacterSelected: boolean = false;
+  listCategorySelected: boolean = false;
   homeSelected: boolean = true;
-  onSelect(indice: number): void {
-    if(indice==0){
+
+  /* cette partie permet de determiner quel page on affiche en fonction du choix dans le menu pourrai être remplacer par du routing */
+  onSelect(indice: string): void {
+    if(indice == "home"){
       this.listActorSelected = false;
       this.listMovieSelected = false;
+      this.listDirectorSelected = false;
+      this.listCharacterSelected = false;
+      this.listCategorySelected = false;
       this.homeSelected = true;
     }
-    else if(indice == 1){
+    else if(indice == "actors"){
       this.listActorSelected = true;
       this.listMovieSelected = false;
+      this.listDirectorSelected = false;
+      this.listCharacterSelected = false;
+      this.listCategorySelected = false;
       this.homeSelected = false;
-    }else{
+    }else if (indice == "movies"){
       this.listActorSelected = false;
       this.listMovieSelected = true;
+      this.listDirectorSelected = false;
+      this.listCharacterSelected = false;
+      this.listCategorySelected = false;
+      this.homeSelected = false;
+    }else if (indice == "directors"){
+      this.listActorSelected = false;
+      this.listMovieSelected = false;
+      this.listDirectorSelected = true;
+      this.listCharacterSelected = false;
+      this.listCategorySelected = false;
+      this.homeSelected = false;
+    }else if (indice == "characters"){
+      this.listActorSelected = false;
+      this.listMovieSelected = false;
+      this.listDirectorSelected = false;
+      this.listCharacterSelected = true;
+      this.listCategorySelected = false;
+      this.homeSelected = false;
+    }else if (indice == "categories"){
+      this.listActorSelected = false;
+      this.listMovieSelected = false;
+      this.listDirectorSelected = false;
+      this.listCharacterSelected = false;
+      this.listCategorySelected = true;
       this.homeSelected = false;
     }
   }

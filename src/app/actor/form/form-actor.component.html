@@ -1,26 +1,27 @@
-<div class="form-group row">
-    <label for="example-text-input" class="col-2 col-form-label">Text</label>
-    <div class="col-10">
-        <input class="form-control" type="text" value="Artisanal kale" id="example-text-input">
+<div *ngIf="actor">
+    <div class="form-group row">
+        <label for="example-text-input" class="col-2 col-form-label">Nom</label>
+        <div class="col-10">
+            <input class="form-control" type="text" [(ngModel)]="actor.name" id="example-text-input">
+        </div>
     </div>
-</div>
-
-<div class="form-group row">
-    <label for="example-email-input" class="col-2 col-form-label">Email</label>
-    <div class="col-10">
-        <input class="form-control" type="email" value="bootstrap@example.com" id="example-email-input">
+    <div class="form-group row">
+        <label for="example-text-input" class="col-2 col-form-label">Prénom</label>
+        <div class="col-10">
+            <input class="form-control" type="text" [(ngModel)]="actor.firstName" id="example-text-input">
+        </div>
     </div>
-</div>
-<div class="form-group row">
-    <label for="example-url-input" class="col-2 col-form-label">URL</label>
-    <div class="col-10">
-        <input class="form-control" type="url" value="https://getbootstrap.com" id="example-url-input">
-    </div>
-</div>
-
-<div class="form-group row">
-    <label for="example-date-input" class="col-2 col-form-label">Date</label>
-    <div class="col-10">
-        <input class="form-control" type="date" value="2011-08-19" id="example-date-input">
-    </div>
+    <div class="form-group row">
+        <label for="example-date-input" class="col-2 col-form-label">Date de naissance</label>
+        <div class="col-10">
+            <input class="form-control" type="date" [(ngModel)]="actor.birthday" id="example-date-input">
+        </div>
+    </div>   
+    <div class="form-group row">
+        <label for="example-date-input" class="col-2 col-form-label">Date de mort</label>
+        <div class="col-10">
+            <input class="form-control" type="date" [(ngModel)]="actor.deathDate" id="example-date-input">
+        </div>
+    </div> 
+    <button type="button" class="btn btn-primary pull pull-right" (click)="valider()">Valider</button>
 </div>

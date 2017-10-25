@@ -5,14 +5,25 @@
       <tr>
         <th>Nom</th>
         <th>Prenom</th>
+        <th>Anniversaire</th>
+        <th>Date de mort</th>
         <th></th>
       </tr>
     </thead>
     <tbody>
       <tr *ngFor="let actor of actors">
-        <td>{{actor.firstName}}</td>
-        <td>{{actor.name}}</td>
-        <td><a class="btn btn-secondary" href="#" role="button">View details »</a></td>
+        <td>{{ actor.firstName }}</td>
+        <td>{{ actor.name }}</td>
+        <td>{{ actor.birthday }}</td>
+        <td>{{ actor.deathDate }}</td>
+        <td>
+          <a class="btn btn-primary" href="#" role="button" (click)="edit(actor.id)">
+              <i class="fa fa-pencil-square-o" aria-hidden="true"></i>
+          </a>
+          <a class="btn btn-danger" href="#" role="button" (click)="delete(actor.id)">
+              <i class="fa fa-trash" aria-hidden="true"></i>
+          </a>
+        </td>
       </tr>
     </tbody>
   </table>

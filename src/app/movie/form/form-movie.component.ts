@@ -16,12 +16,18 @@ export class FormMovieComponent implements OnInit {
     }
   
     ngOnInit(): void {
-        const url = 'http://localhost:8080/cinema/api/film/'+ this.id;
-        this.http.get(url).subscribe((movie: Movie)  => {
-            this.movie = movie;
-            console.log(this.movie);
-        });
+        if(this.id == 0){ //C'est un ajout donc on n'a pas besoin de charger la personne
+            this.movie = new Movie();
+        }else{
+            const url = 'http://localhost:8080/cinema/api/film/'+ this.id;
+            this.http.get(url).subscribe((movie: Movie)  => {
+                this.movie = movie;
+            });
+        }
     }  
+    valider() {
+        alert("c'est comme si la modification était faites");
+    }
 }
 
 

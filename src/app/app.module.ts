@@ -4,13 +4,26 @@ import { FormsModule }   from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
 
 import {NgbModule} from '@ng-bootstrap/ng-bootstrap';
+import {NgbdModalContent } from './ngbd-modal-content';
 
 import { AppComponent }  from './app.component';
+
 import { ListMovieComponent } from './movie/list/list-movie.component';
+import { FormMovieComponent } from './movie/form/form-movie.component';
+
 import { ListActorComponent } from './actor/list/list-actor.component';
 import { FormActorComponent } from './actor/form/form-actor.component';
-import { FormMovieComponent } from './movie/form/form-movie.component';
-import {NgbdModalContent } from './app.component';
+
+import { ListDirectorComponent } from './director/list/list-director.component';
+import { FormDirectorComponent } from './director/form/form-director.component';
+
+import { ListCharacterComponent } from './character/list/list-character.component';
+import { FormCharacterComponent } from './character/form/form-character.component';
+
+import { ListCategoryComponent } from './category/list/list-category.component';
+import { FormCategoryComponent } from './category/form/form-category.component';
+
+
 
 @NgModule({
   imports: [
@@ -21,11 +34,22 @@ import {NgbdModalContent } from './app.component';
   ],
   declarations: [
     AppComponent,
+    NgbdModalContent,
+
     ListMovieComponent,
+    FormMovieComponent,
+
     ListActorComponent,
     FormActorComponent,
-    FormMovieComponent,
-    NgbdModalContent
+
+    ListDirectorComponent,
+    FormDirectorComponent,
+
+    ListCharacterComponent,
+    FormCharacterComponent,
+
+    ListCategoryComponent,
+    FormCategoryComponent,
   ],
   providers: [ ],
   bootstrap: [ AppComponent ],

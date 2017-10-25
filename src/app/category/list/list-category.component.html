@@ -1,0 +1,27 @@
+<div class="container">
+  <h2>Liste des categories</h2>          
+  <table class="table table-striped">
+    <thead>
+      <tr>
+        <th>Code</th>
+        <th>Nom</th>
+        <th></th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let category of categorys">
+        <td>{{category.code}}</td>
+        <td>{{category.name}}</td>
+        <td>
+            <a class="btn btn-primary" href="#" role="button" (click)="edit(category.code)">
+                <i class="fa fa-pencil-square-o" aria-hidden="true"></i>
+            </a>
+            <a class="btn btn-danger" href="#" role="button" (click)="delete(category.code)">
+                <i class="fa fa-trash" aria-hidden="true"></i>
+            </a>
+          </td>
+      </tr>
+    </tbody>
+  </table>
+</div>
+  

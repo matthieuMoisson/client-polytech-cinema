@@ -5,16 +5,32 @@
       <tr>
         <th>Titre</th>
         <th>Budget</th>
+        <th>Durée</th>
+        <th>Bénéfice</th>
+        <th>Catégorie</th>
+        <th>Date de sortie</th>
+        <th>Réalisateur</th>
         <th></th>
       </tr>
     </thead>
     <tbody>
       <tr *ngFor="let movie of movies">
-        <td>{{movie.title}}</td>
-        <td>{{movie.budget}} euros</td>
-        <td><a class="btn btn-secondary" href="#" role="button">View details »</a></td>
+        <td>{{ movie.title }}</td>
+        <td>{{ movie.budget }} euros</td>
+        <td>{{ movie.duration }} min</td>
+        <td>{{ movie.grossing }} euros</td>
+        <td>{{ movie.category.name }}</td>
+        <td>{{ movie.releaseDate }}</td>
+        <td>{{ movie.director.firstName }} {{ movie.director.name }}</td>
+        <td>
+            <a class="btn btn-primary" href="#" role="button" (click)="edit(movie.id)">
+                <i class="fa fa-pencil-square-o" aria-hidden="true"></i>
+            </a>
+            <a class="btn btn-danger" href="#" role="button" (click)="delete(movie.id)">
+                <i class="fa fa-trash" aria-hidden="true"></i>
+            </a>
+          </td>
       </tr>
     </tbody>
   </table>
 </div>
-  

@@ -1,0 +1,29 @@
+<div class="container">
+  <h2>Liste des personnages</h2>          
+  <table class="table table-striped">
+    <thead>
+      <tr>
+        <th>Nom du film</th>
+        <th>Nom de l'acteur</th>
+        <th>Nom du personnage</th>
+        <th></th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let character of characters">
+        <td>{{ character.film.title }}</td>
+        <td>{{ character.actor.firstName }} {{ character.actor.name }}</td>
+        <td>{{ character.name }}</td>
+        <td>
+            <a class="btn btn-primary" href="#" role="button" (click)="edit(character.id)">
+                <i class="fa fa-pencil-square-o" aria-hidden="true"></i>
+            </a>
+            <a class="btn btn-danger" href="#" role="button" (click)="delete(character.id)">
+                <i class="fa fa-trash" aria-hidden="true"></i>
+            </a>
+          </td>
+      </tr>
+    </tbody>
+  </table>
+</div>
+  

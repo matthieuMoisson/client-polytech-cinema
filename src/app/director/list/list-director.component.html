@@ -1,0 +1,26 @@
+<div class="container">
+  <h2>Liste des directeurs de film</h2>          
+  <table class="table table-striped">
+    <thead>
+      <tr>
+        <th>Prénom</th>
+        <th>Nom</th>
+        <th></th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let director of directors">
+        <td>{{director.firstName}}</td>
+        <td>{{director.name}}</td>
+        <td>
+            <a class="btn btn-primary" href="#" role="button" (click)="edit(director.id)">
+                <i class="fa fa-pencil-square-o" aria-hidden="true"></i>
+            </a>
+            <a class="btn btn-danger" href="#" role="button" (click)="delete(director.id)">
+                <i class="fa fa-trash" aria-hidden="true"></i>
+            </a>
+          </td>
+      </tr>
+    </tbody>
+  </table>
+</div>

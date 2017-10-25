@@ -1,6 +1,7 @@
 import {Component, Input, OnInit} from '@angular/core';
 import {Actor} from '../actor';
 import { HttpClient } from '@angular/common/http';
+import { HttpParams } from '@angular/common/http';
 
 @Component({
     selector: 'form-actor-root',
@@ -27,16 +28,15 @@ export class FormActorComponent implements OnInit {
     }  
 
     valider() {
-        alert("c'est comme si la modification était faites");
-        console.log("POST");
-        console.log(this.actor);
+        
         let url = 'http://localhost:8080/cinema/api/actor/';
-        this.http.post(url, {
-            "birthday": "" + this.actor.birthday,
-            "deathDate": "" + this.actor.deathDate, 
-            "firstName": "" + this.actor.firstName, 
-            "name": "" + this.actor.name
-        }).subscribe(res => console.log(res));
+        this.http.post(url, {},{
+            params: new HttpParams().set('birthday', "" + this.actor.birthday)
+                                    .set("deathDate", this.actor.deathDate)
+                                    .set("firstName", this.actor.firstName)
+                                    .set("name", this.actor.name)
+        }
+        ).subscribe(res => console.log(res));
     }
 }
 

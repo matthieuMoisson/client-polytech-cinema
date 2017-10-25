@@ -44,7 +44,6 @@ export class ListActorComponent implements OnInit {
       if(true){// Si l'acteur est bien supprimé
         for(var i = 0; i < this.actors.length; i++){
           if(this.actors[i].id == id){
-
             var indice = i;
           }
         }

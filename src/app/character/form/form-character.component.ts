@@ -1,5 +1,7 @@
 import {Component, Input, OnInit} from '@angular/core';
 import {Character} from '../character';
+import {Movie} from '../../movie/movie';
+import {Actor} from '../../actor/actor';
 import { HttpClient } from '@angular/common/http';
 
 @Component({
@@ -12,10 +14,22 @@ import { HttpClient } from '@angular/common/http';
 export class FormCharacterComponent implements OnInit {
     @Input() id;
     character: Character;
+    movies: Movie[];
+    actors: Actor[];
     constructor(private http: HttpClient) {
     }
   
     ngOnInit(): void {
+        const urlActors = 'http://localhost:8080/cinema/api/actor';
+        this.http.get(urlActors).subscribe((actors: Actor[])  => {
+          this.actors = actors;
+        });
+
+        const urlMovies = 'http://localhost:8080/cinema/api/film';
+        this.http.get(urlMovies).subscribe((movies: Movie[])  => {
+          this.movies = movies;
+        });
+
         if(this.id == 0){ //C'est un ajout donc on n'a pas besoin de charger la personne
             this.character = new Character();
         }else{
@@ -26,7 +40,7 @@ export class FormCharacterComponent implements OnInit {
         }
     }  
     valider() {
-        alert("c'est comme si la modification était faites");
+        console.log(this.character);
     }
 }
 

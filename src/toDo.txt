@@ -1,5 +1,3 @@
 l'envoie d'une formulaire ne marche pas
 
-supprimer de la liste dinamiquement quand la suppression est ok
-
 ajouter des filtres

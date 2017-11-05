@@ -4,4 +4,6 @@ export class Actor {
     deathDate: string;
     firstName: string;
     name: string;
+
+    show: boolean;
 }

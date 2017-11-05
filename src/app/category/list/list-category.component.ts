@@ -36,6 +36,23 @@ export class ListCategoryComponent implements OnInit{
   }
 
   delete(id) {
+    let url = 'http://localhost:8080/cinema/api/category/' + id;
+    this.http.delete(url).subscribe(
+      res => console.log(res), 
+      msg => {
+        if(msg = "OK"){// Si l'acteur est bien supprimé
+          for(var i = 0; i < this.categorys.length; i++){
+            if(this.categorys[i].code == id){
+              var indice = i;
+            }
+          }
+          this.categorys.splice(indice, 1);
+          alert("Category supprimé avec succé");
+        }else{
+          alert("La categoryr n'a pas était supprimé");
+        }
+      }
+    );
   }
 }
 

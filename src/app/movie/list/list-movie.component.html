@@ -1,5 +1,17 @@
 <div class="container">
-  <h2>Liste des films</h2>          
+  <div class="form-group row">
+    <h2 class="col-6">Liste des films</h2>   
+    <div class="col-2"></div>
+    <div class="col-2">
+        <select class="form-control" [(ngModel)]="category" name="category">
+            <option value="?">Choisir une category</option>
+            <option *ngFor="let category of categories" [value]="category.code">{{ category.name }} </option>
+        </select>
+    </div>
+    <div class="col-2">
+        <input class="form-control" type="text" [(ngModel)]="title" id="example-text-input" placeholder="Titre du film">
+    </div>
+  </div>
   <table class="table table-striped">
     <thead>
       <tr>
@@ -14,22 +26,22 @@
       </tr>
     </thead>
     <tbody>
-      <tr *ngFor="let movie of movies">
-        <td>{{ movie.title }}</td>
-        <td>{{ movie.budget }} euros</td>
-        <td>{{ movie.duration }} min</td>
-        <td>{{ movie.grossing }} euros</td>
-        <td>{{ movie.category.name }}</td>
-        <td>{{ movie.releaseDate }}</td>
-        <td>{{ movie.director.firstName }} {{ movie.director.name }}</td>
-        <td>
-            <a class="btn btn-primary" href="#" role="button" (click)="edit(movie.id)">
-                <i class="fa fa-pencil-square-o" aria-hidden="true"></i>
-            </a>
-            <a class="btn btn-danger" href="#" role="button" (click)="delete(movie.id)">
-                <i class="fa fa-trash" aria-hidden="true"></i>
-            </a>
-          </td>
+      <tr *ngFor="let movie of movies | filterMovie : title : category" >
+        <td *ngIf="movie.show">{{ movie.title }}</td>
+        <td *ngIf="movie.show">{{ movie.budget }} euros</td>
+        <td *ngIf="movie.show">{{ movie.duration }} min</td>
+        <td *ngIf="movie.show">{{ movie.grossing }} euros</td>
+        <td *ngIf="movie.show">{{ movie.category.name }}</td>
+        <td *ngIf="movie.show">{{ movie.releaseDate }}</td>
+        <td *ngIf="movie.show">{{ movie.director.firstName }} {{ movie.director.name }}</td>
+        <td *ngIf="movie.show">
+          <a class="btn btn-primary" href="#" role="button" (click)="edit(movie.id)">
+              <i class="fa fa-pencil-square-o" aria-hidden="true"></i>
+          </a>
+          <a class="btn btn-danger" href="#" role="button" (click)="delete(movie.id)">
+              <i class="fa fa-trash" aria-hidden="true"></i>
+          </a>
+        </td>
       </tr>
     </tbody>
   </table>

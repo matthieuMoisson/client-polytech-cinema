@@ -36,6 +36,23 @@ export class ListDirectorComponent implements OnInit{
   }
 
   delete(id) {
+    let url = 'http://localhost:8080/cinema/api/director/' + id;
+    this.http.delete(url).subscribe(
+      res => console.log(res), 
+      msg => {
+        if(msg = "OK"){// Si l'acteur est bien supprimé
+          for(var i = 0; i < this.directors.length; i++){
+            if(this.directors[i].id == id){
+              var indice = i;
+            }
+          }
+          this.directors.splice(indice, 1);
+          alert("Directeur supprimé avec succé");
+        }else{
+          alert("Le directeur n'a pas était supprimé");
+        }
+      }
+    );
   }
 }
 

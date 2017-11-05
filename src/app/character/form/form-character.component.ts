@@ -3,6 +3,7 @@ import {Character} from '../character';
 import {Movie} from '../../movie/movie';
 import {Actor} from '../../actor/actor';
 import { HttpClient } from '@angular/common/http';
+import { HttpParams } from '@angular/common/http';
 
 @Component({
     selector: 'form-character-root',
@@ -41,7 +42,31 @@ export class FormCharacterComponent implements OnInit {
         }
     }  
     valider() {
-        console.log(this.character);
+        var params: HttpParams = new HttpParams().set('name', this.character.name)
+        .set("idActor", ""+ this.character.idActor)
+        .set("idFilm", ""+ this.character.idFilm);
+        if(this.character.id==undefined){
+            console.log(this.character);
+            let url = 'http://localhost:8080/cinema/api/character/';
+            this.http.post(url, {},{ params }
+            ).subscribe(
+                res => alert("Ajout avec succés"), 
+                msg=>alert("L'ajout n'a pas marché")
+            );
+        }else{
+            let url = 'http://localhost:8080/cinema/api/character/' + this.character.id;
+            this.http.put(url, {},{ params }
+            ).subscribe(
+                res => alert("Modification avec succés"), 
+                msg=>alert("La modification n'a pas marché")
+            );
+        }   
+    }
+    isInvalid(): boolean{
+        return this.character.idActor == undefined 
+            || this.character.idFilm == undefined
+            || this.character.name == ""
+            || this.character.name == undefined;
     }
 }
 

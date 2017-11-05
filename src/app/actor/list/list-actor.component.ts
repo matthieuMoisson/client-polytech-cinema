@@ -6,6 +6,8 @@ import {Actor} from '../actor';
 
 import {NgbModal, NgbActiveModal} from '@ng-bootstrap/ng-bootstrap';
 
+import {FilterByName} from '../../pipes/pipes'
+
 import { NgbdModalContent } from '../../ngbd-modal-content';
 
 @Component({
@@ -18,7 +20,7 @@ import { NgbdModalContent } from '../../ngbd-modal-content';
 
 export class ListActorComponent implements OnInit {
     actors: Actor[];
-
+    name: string = "";
     constructor(private http: HttpClient, private modalService: NgbModal) {
       
     }
@@ -28,6 +30,9 @@ export class ListActorComponent implements OnInit {
       const url = 'http://localhost:8080/cinema/api/actor';
       this.http.get(url).subscribe((actors: Actor[])  => {
         this.actors = actors;
+        for(var i = 0; i < this.actors.length; i ++){
+          this.actors[i].show = true;
+        }
       });
     }
 
@@ -38,19 +43,23 @@ export class ListActorComponent implements OnInit {
     }
 
     delete(id) {
-
       let url = 'http://localhost:8080/cinema/api/actor/' + id;
-      this.http.delete(url).subscribe(res => console.log(res));
-      if(true){// Si l'acteur est bien supprimé
-        for(var i = 0; i < this.actors.length; i++){
-          if(this.actors[i].id == id){
-            var indice = i;
+      this.http.delete(url).subscribe(
+        res => console.log(res), 
+        msg => {
+          if(msg = "OK"){// Si l'acteur est bien supprimé
+            for(var i = 0; i < this.actors.length; i++){
+              if(this.actors[i].id == id){
+                var indice = i;
+              }
+            }
+            this.actors.splice(indice, 1);
+            alert("Acteur supprimé avec succé");
+          }else{
+            alert("L'acteur n'a pas était supprimé");
           }
         }
-        this.actors.splice(indice, 1);
-      }else{
-
-      }
+      );
     }
 
     

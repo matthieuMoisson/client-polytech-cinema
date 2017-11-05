@@ -1,5 +1,11 @@
 <div class="container">
-  <h2>Liste des acteurs</h2>          
+  <div class="form-group row">
+    <h2 class="col-6">Liste des acteurs</h2>   
+    <div class="col-4"></div>
+    <div class="col-2">
+        <input class="form-control" type="text" [(ngModel)]="name" id="example-text-input" placeholder="Nom de l'acteur">
+    </div>
+  </div>  
   <table class="table table-striped">
     <thead>
       <tr>
@@ -11,12 +17,12 @@
       </tr>
     </thead>
     <tbody>
-      <tr *ngFor="let actor of actors">
-        <td>{{ actor.firstName }}</td>
-        <td>{{ actor.name }}</td>
-        <td>{{ actor.birthday }}</td>
-        <td>{{ actor.deathDate }}</td>
-        <td>
+      <tr *ngFor="let actor of actors | filterByName : name">
+        <td  *ngIf="actor.show">{{ actor.name }}</td>
+        <td  *ngIf="actor.show">{{ actor.firstName }}</td>
+        <td  *ngIf="actor.show">{{ actor.birthday }}</td>
+        <td  *ngIf="actor.show">{{ actor.deathDate }}</td>
+        <td  *ngIf="actor.show">
           <a class="btn btn-primary" href="#" role="button" (click)="edit(actor.id)">
               <i class="fa fa-pencil-square-o" aria-hidden="true"></i>
           </a>

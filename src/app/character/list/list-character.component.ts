@@ -36,6 +36,23 @@ export class ListCharacterComponent implements OnInit{
   }
 
   delete(id) {
+    let url = 'http://localhost:8080/cinema/api/character/' + id;
+    this.http.delete(url).subscribe(
+      res => console.log(res), 
+      msg => {
+        if(msg = "OK"){// Si l'acteur est bien supprimé
+          for(var i = 0; i < this.characters.length; i++){
+            if(this.characters[i].id == id){
+              var indice = i;
+            }
+          }
+          this.characters.splice(indice, 1);
+          alert("Personnage supprimé avec succé");
+        }else{
+          alert("Le personnage n'a pas était supprimé");
+        }
+      }
+    );
   }
 }
 

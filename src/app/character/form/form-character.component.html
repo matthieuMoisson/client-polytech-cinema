@@ -21,7 +21,7 @@
             </select>
         </div>
     </div>
-    <button type="button" class="btn btn-primary pull pull-right" (click)="valider()">Valider</button>
+    <button type="button" [disabled]="isInvalid()" class="btn btn-primary pull pull-right" (click)="valider()">Valider</button>
 </div>
 
 

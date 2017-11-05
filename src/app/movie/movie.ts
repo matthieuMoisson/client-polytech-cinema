@@ -11,4 +11,6 @@ export class Movie {
     title: string;
     director: Director;
     category: Category;
+
+    show: boolean = true;
 }

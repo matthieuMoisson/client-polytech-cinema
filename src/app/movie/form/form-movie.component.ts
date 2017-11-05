@@ -3,6 +3,7 @@ import {Movie} from '../movie';
 import {Category} from '../../category/category';
 import {Director} from '../../director/director';
 import { HttpClient } from '@angular/common/http';
+import { HttpParams } from '@angular/common/http';
 
 @Component({
     selector: 'form-movie-root',
@@ -20,6 +21,7 @@ export class FormMovieComponent implements OnInit {
     }
   
     ngOnInit(): void {
+        console.log("je passe ici");
         const urlCategories = 'http://localhost:8080/cinema/api/category';
         this.http.get(urlCategories).subscribe((categories: Category[])  => {
           this.categories = categories;
@@ -44,7 +46,35 @@ export class FormMovieComponent implements OnInit {
         }
     }  
     valider() {
-        alert("c'est comme si la modification était faites");
+        var params: HttpParams = new HttpParams().set('budget', "" + this.movie.budget)
+        .set("category","" + this.movie.category.code)
+        .set("director", "" + this.movie.director.id)
+        .set("grossing", "" + this.movie.grossing)
+        .set("releaseDate", "" + this.movie.releaseDate)
+        .set("title", "" + this.movie.title)
+        .set("duration", "" + this.movie.duration);
+        
+        if(this.movie.id==undefined){
+            console.log(this.movie);
+            let url = 'http://localhost:8080/cinema/api/film/';
+            this.http.post(url, {},{ params }
+            ).subscribe(
+                res => alert("Ajout avec succés"), 
+                msg=>alert("L'ajout n'a pas marché")
+            );
+        }else{
+            let url = 'http://localhost:8080/cinema/api/film/' + this.movie.id;
+            this.http.put(url, {},{ params }
+            ).subscribe(
+                res => alert("Modification avec succés"), 
+                msg=>alert("La modification n'a pas marché")
+            );
+        }   
+    }
+
+    isInvalid(): boolean{
+        return this.movie.title == undefined 
+            || this.movie.title == "";
     }
 }
 

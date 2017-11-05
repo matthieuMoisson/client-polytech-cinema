@@ -28,15 +28,41 @@ export class FormActorComponent implements OnInit {
     }  
 
     valider() {
-        
-        let url = 'http://localhost:8080/cinema/api/actor/';
-        this.http.post(url, {},{
-            params: new HttpParams().set('birthday', "" + this.actor.birthday)
-                                    .set("deathDate", this.actor.deathDate)
-                                    .set("firstName", this.actor.firstName)
-                                    .set("name", this.actor.name)
+        if(this.actor.deathDate == undefined){
+            var params: HttpParams = new HttpParams().set('birthday', this.actor.birthday)
+            .set("firstName", this.actor.firstName)
+            .set("name", this.actor.name)
+        }else{
+            var params: HttpParams = new HttpParams().set('birthday', this.actor.birthday)
+            .set("firstName", this.actor.firstName)
+            .set("name", this.actor.name)
+            .set("deathDate", "" + this.actor.deathDate);
         }
-        ).subscribe(res => console.log(res));
+        if(this.actor.id==undefined){
+            console.log(this.actor);
+            let url = 'http://localhost:8080/cinema/api/actor/';
+            this.http.post(url, {},{ params }
+            ).subscribe(
+                res => alert("Ajout avec succés"), 
+                msg=>alert("L'ajout n'a pas marché")
+            );
+        }else{
+            let url = 'http://localhost:8080/cinema/api/actor/' + this.actor.id;
+            this.http.put(url, {},{ params }
+            ).subscribe(
+                res => alert("Modification avec succés"), 
+                msg=>alert("La modification n'a pas marché")
+            );
+        }   
+    }
+
+    isInvalid(): boolean{
+        return this.actor.birthday == undefined 
+            || this.actor.birthday == ""
+            || this.actor.firstName == undefined
+            || this.actor.name == undefined
+            || this.actor.name == ""
+            || this.actor.firstName == "";
     }
 }
 

@@ -23,7 +23,7 @@ import { FormCharacterComponent } from './character/form/form-character.componen
 import { ListCategoryComponent } from './category/list/list-category.component';
 import { FormCategoryComponent } from './category/form/form-category.component';
 
-
+import { filterMovie, FilterByName } from './pipes/pipes'
 
 @NgModule({
   imports: [
@@ -50,6 +50,8 @@ import { FormCategoryComponent } from './category/form/form-category.component';
 
     ListCategoryComponent,
     FormCategoryComponent,
+
+    filterMovie, FilterByName
   ],
   providers: [ ],
   bootstrap: [ AppComponent ],

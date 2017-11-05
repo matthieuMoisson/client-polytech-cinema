@@ -1,6 +1,10 @@
 <div class="container">
   <div class="form-group row">
-    <h2 class="col-6">Liste des films</h2>   
+    <h2 class="col-6">Liste des films
+        <button type="button" class="btn btn-primary" (click)="load()">
+          <i class="fa fa-refresh" aria-hidden="true"></i>
+        </button>  
+    </h2>   
     <div class="col-2"></div>
     <div class="col-2">
         <select class="form-control" [(ngModel)]="category" name="category">
@@ -40,6 +44,9 @@
           </a>
           <a class="btn btn-danger" href="#" role="button" (click)="delete(movie.id)">
               <i class="fa fa-trash" aria-hidden="true"></i>
+          </a>
+          <a class="btn btn-secondary" href="#" role="button" (click)="voir(movie.id)">
+              <i class="fa fa-eye" aria-hidden="true"></i>
           </a>
         </td>
       </tr>

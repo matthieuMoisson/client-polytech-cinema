@@ -23,10 +23,7 @@ export class ListCategoryComponent implements OnInit{
   }
 
   ngOnInit(): void {
-    const url = 'http://localhost:8080/cinema/api/category';
-    this.http.get(url).subscribe((categorys: Category[])  => {
-      this.categorys = categorys;
-    });
+    this.load();
   }  
   
   edit(id) {
@@ -53,6 +50,13 @@ export class ListCategoryComponent implements OnInit{
         }
       }
     );
+  }
+
+  load(): void {
+    const url = 'http://localhost:8080/cinema/api/category';
+    this.http.get(url).subscribe((categorys: Category[])  => {
+      this.categorys = categorys;
+    });
   }
 }
 

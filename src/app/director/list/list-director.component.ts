@@ -23,10 +23,8 @@ export class ListDirectorComponent implements OnInit{
   }
 
   ngOnInit(): void {
-    const url = 'http://localhost:8080/cinema/api/director';
-    this.http.get(url).subscribe((directors: Director[])  => {
-      this.directors = directors;
-    });
+    
+    this.load();
   }  
 
   edit(id) {
@@ -53,6 +51,13 @@ export class ListDirectorComponent implements OnInit{
         }
       }
     );
+  }
+
+  load(): void {
+    const url = 'http://localhost:8080/cinema/api/director';
+    this.http.get(url).subscribe((directors: Director[])  => {
+      this.directors = directors;
+    });
   }
 }
 

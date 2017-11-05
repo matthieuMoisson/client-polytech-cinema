@@ -21,17 +21,19 @@ export class filterMovie implements PipeTransform {
 }
 
 @Pipe({
-    name: 'filterByName',
+    name: 'filterByActor',
     pure: false
 })
-export class FilterByName implements PipeTransform {
-    transform(items: any[], name): any {
+export class filterByActor implements PipeTransform {
+    transform(items: any[], name, firstName): any {
         if(items != undefined){
             for(var i = 0; i < items.length; i ++){
+                items[i].show = true;
                 if(items[i].name.slice(0, name.length) != name){
                     items[i].show = false;
-                }else{
-                    items[i].show = true;
+                }
+                if(items[i].firstName.slice(0, firstName.length) != firstName){
+                    items[i].show = false;
                 }
             }
         }

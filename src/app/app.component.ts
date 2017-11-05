@@ -9,10 +9,11 @@ import { NgbdModalContent } from './ngbd-modal-content';
     styleUrls: ['./app.component.css']
 })
 
-export class AppComponent {
+export class AppComponent{
 
   constructor(private modalService: NgbModal) {}
   
+
   open(type) {
     const modalRef = this.modalService.open(NgbdModalContent);
     modalRef.componentInstance.type = type;

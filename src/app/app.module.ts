@@ -10,6 +10,7 @@ import { AppComponent }  from './app.component';
 
 import { ListMovieComponent } from './movie/list/list-movie.component';
 import { FormMovieComponent } from './movie/form/form-movie.component';
+import { VueMovieComponent } from './movie/vue/vue-movie.component';
 
 import { ListActorComponent } from './actor/list/list-actor.component';
 import { FormActorComponent } from './actor/form/form-actor.component';
@@ -23,7 +24,9 @@ import { FormCharacterComponent } from './character/form/form-character.componen
 import { ListCategoryComponent } from './category/list/list-category.component';
 import { FormCategoryComponent } from './category/form/form-category.component';
 
-import { filterMovie, FilterByName } from './pipes/pipes'
+import { filterMovie, filterByActor } from './pipes/pipes';
+
+
 
 @NgModule({
   imports: [
@@ -35,6 +38,8 @@ import { filterMovie, FilterByName } from './pipes/pipes'
   declarations: [
     AppComponent,
     NgbdModalContent,
+
+    VueMovieComponent,
 
     ListMovieComponent,
     FormMovieComponent,
@@ -51,10 +56,10 @@ import { filterMovie, FilterByName } from './pipes/pipes'
     ListCategoryComponent,
     FormCategoryComponent,
 
-    filterMovie, FilterByName
+    filterMovie, filterByActor,
   ],
   providers: [ ],
   bootstrap: [ AppComponent ],
-  entryComponents:[ NgbdModalContent]
+  entryComponents:[ NgbdModalContent, VueMovieComponent]
 })
 export class AppModule { }

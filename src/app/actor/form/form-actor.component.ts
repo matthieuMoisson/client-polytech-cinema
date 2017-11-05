@@ -39,11 +39,10 @@ export class FormActorComponent implements OnInit {
             .set("deathDate", "" + this.actor.deathDate);
         }
         if(this.actor.id==undefined){
-            console.log(this.actor);
             let url = 'http://localhost:8080/cinema/api/actor/';
             this.http.post(url, {},{ params }
             ).subscribe(
-                res => alert("Ajout avec succés"), 
+                res => { alert("Ajout avec succés"); this.init(); }, 
                 msg=>alert("L'ajout n'a pas marché")
             );
         }else{
@@ -54,6 +53,8 @@ export class FormActorComponent implements OnInit {
                 msg=>alert("La modification n'a pas marché")
             );
         }   
+
+
     }
 
     isInvalid(): boolean{
@@ -63,6 +64,10 @@ export class FormActorComponent implements OnInit {
             || this.actor.name == undefined
             || this.actor.name == ""
             || this.actor.firstName == "";
+    }
+
+    init(): void{
+        this.actor = new Actor();
     }
 }
 

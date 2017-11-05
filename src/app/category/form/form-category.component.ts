@@ -38,7 +38,7 @@ export class FormCategoryComponent implements OnInit {
             let url = 'http://localhost:8080/cinema/api/category/';
             this.http.post(url, {},{ params }
             ).subscribe(
-                res => alert("Ajout avec succés"), 
+                res => { alert("Ajout avec succés"); this.init(); }, 
                 msg=>alert("L'ajout n'a pas marché")
             );
         }else{
@@ -53,6 +53,11 @@ export class FormCategoryComponent implements OnInit {
 
     isInvalid(): boolean{
         return this.category.name == "";
+    }
+
+    init(): void{
+        this.category = new Category();
+        this.edition = true;
     }
 }
 

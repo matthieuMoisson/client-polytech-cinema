@@ -12,13 +12,7 @@
 <div class="modal-body">
     <form-actor-root [id]="id" *ngIf="type == 'actor'"></form-actor-root>
     <form-movie-root [id]="id" *ngIf="type == 'movie'"></form-movie-root>
-    <form-director-root [id]="id" *ngIf="type == 'director'"></form-director-root>
-    <form-character-root [id]="id" *ngIf="type == 'character'"></form-character-root>
-    <form-category-root [id]="id" *ngIf="type == 'category'"></form-category-root>
+    <form-director-root [id]="id"  *ngIf="type == 'director'"></form-director-root>
+    <form-character-root [id]="id"  *ngIf="type == 'character'"></form-character-root>
+    <form-category-root [id]="id"  *ngIf="type == 'category'"></form-category-root>
 </div>
-
-<!-- 
-<div class="modal-footer">
-<button type="button" class="btn btn-outline-dark" (click)="activeModal.close('Close click')">Close</button>
-</div>
--->

@@ -50,7 +50,7 @@ export class FormCharacterComponent implements OnInit {
             let url = 'http://localhost:8080/cinema/api/character/';
             this.http.post(url, {},{ params }
             ).subscribe(
-                res => alert("Ajout avec succés"), 
+                res => { alert("Ajout avec succés"); this.init(); }, 
                 msg=>alert("L'ajout n'a pas marché")
             );
         }else{
@@ -62,11 +62,16 @@ export class FormCharacterComponent implements OnInit {
             );
         }   
     }
+
     isInvalid(): boolean{
         return this.character.idActor == undefined 
             || this.character.idFilm == undefined
             || this.character.name == ""
             || this.character.name == undefined;
+    }
+
+    init(): void{
+        this.character = new Character();
     }
 }
 

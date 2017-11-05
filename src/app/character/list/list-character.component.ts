@@ -23,10 +23,7 @@ export class ListCharacterComponent implements OnInit{
   }
 
   ngOnInit(): void {
-    const url = 'http://localhost:8080/cinema/api/character';
-    this.http.get(url).subscribe((characters: Character[])  => {
-      this.characters = characters;
-    });
+    this.load();
   }  
 
   edit(id) {
@@ -53,6 +50,13 @@ export class ListCharacterComponent implements OnInit{
         }
       }
     );
+  }
+
+  load(): void {
+    const url = 'http://localhost:8080/cinema/api/character';
+    this.http.get(url).subscribe((characters: Character[])  => {
+      this.characters = characters;
+    });
   }
 }
 

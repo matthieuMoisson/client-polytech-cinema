@@ -33,11 +33,7 @@ export class FormMovieComponent implements OnInit {
         });
 
         if(this.id == 0){ 
-            this.movie = new Movie();
-            this.movie.category = new Category();
-            this.movie.category.code = "";
-            this.movie.director = new Director();
-            this.movie.director.id = 0;
+            this.init();
         }else{
             const url = 'http://localhost:8080/cinema/api/film/'+ this.id;
             this.http.get(url).subscribe((movie: Movie)  => {
@@ -59,7 +55,7 @@ export class FormMovieComponent implements OnInit {
             let url = 'http://localhost:8080/cinema/api/film/';
             this.http.post(url, {},{ params }
             ).subscribe(
-                res => alert("Ajout avec succés"), 
+                res => { alert("Ajout avec succés"); this.init(); }, 
                 msg=>alert("L'ajout n'a pas marché")
             );
         }else{
@@ -75,6 +71,14 @@ export class FormMovieComponent implements OnInit {
     isInvalid(): boolean{
         return this.movie.title == undefined 
             || this.movie.title == "";
+    }
+
+    init(): void{
+        this.movie = new Movie();
+        this.movie.category = new Category();
+        this.movie.category.code = "";
+        this.movie.director = new Director();
+        this.movie.director.id = 0;
     }
 }
 

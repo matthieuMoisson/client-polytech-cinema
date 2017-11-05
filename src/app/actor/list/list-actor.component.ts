@@ -6,7 +6,7 @@ import {Actor} from '../actor';
 
 import {NgbModal, NgbActiveModal} from '@ng-bootstrap/ng-bootstrap';
 
-import {FilterByName} from '../../pipes/pipes'
+import {filterByActor} from '../../pipes/pipes'
 
 import { NgbdModalContent } from '../../ngbd-modal-content';
 
@@ -21,19 +21,14 @@ import { NgbdModalContent } from '../../ngbd-modal-content';
 export class ListActorComponent implements OnInit {
     actors: Actor[];
     name: string = "";
+    firstName: string = "";
     constructor(private http: HttpClient, private modalService: NgbModal) {
       
     }
 
     results: string[];
     ngOnInit(): void {
-      const url = 'http://localhost:8080/cinema/api/actor';
-      this.http.get(url).subscribe((actors: Actor[])  => {
-        this.actors = actors;
-        for(var i = 0; i < this.actors.length; i ++){
-          this.actors[i].show = true;
-        }
-      });
+      this.load();
     }
 
     edit(id) {
@@ -62,7 +57,15 @@ export class ListActorComponent implements OnInit {
       );
     }
 
-    
+    load(): void {
+      const url = 'http://localhost:8080/cinema/api/actor';
+      this.http.get(url).subscribe((actors: Actor[])  => {
+        this.actors = actors;
+        for(var i = 0; i < this.actors.length; i ++){
+          this.actors[i].show = true;
+        }
+      });
+    }
 }
 
 

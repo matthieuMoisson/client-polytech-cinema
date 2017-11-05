@@ -10,6 +10,8 @@ import {NgbModal, NgbActiveModal} from '@ng-bootstrap/ng-bootstrap';
 
 import { NgbdModalContent } from '../../ngbd-modal-content';
 
+import { VueMovieComponent } from '../vue/vue-movie.component';
+
 @Component({
     selector: 'list-movie-root',
     templateUrl:'./list-movie.component.html',
@@ -27,14 +29,7 @@ export class ListMovieComponent implements OnInit{
   }
 
   ngOnInit(): void {
-    const url = 'http://localhost:8080/cinema/api/film';
-    this.http.get(url).subscribe((movies: Movie[])  => {
-      this.movies = movies;
-      for(var i = 0; i < this.movies.length; i ++){
-        this.movies[i].show = true;
-      }
-    });
-
+    this.load();
     const urlCategories = 'http://localhost:8080/cinema/api/category';
     this.http.get(urlCategories).subscribe((categories: Category[])  => {
       this.categories = categories;
@@ -66,6 +61,21 @@ export class ListMovieComponent implements OnInit{
         }
       }
     );
+  }
+
+  load(): void {
+    const url = 'http://localhost:8080/cinema/api/film';
+    this.http.get(url).subscribe((movies: Movie[])  => {
+      this.movies = movies;
+      for(var i = 0; i < this.movies.length; i ++){
+        this.movies[i].show = true;
+      }
+    });
+  }
+
+  voir(id) {
+    const modalRef = this.modalService.open(VueMovieComponent);
+    modalRef.componentInstance.id = id;
   }
 }
 

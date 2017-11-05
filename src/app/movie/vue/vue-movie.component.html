@@ -1,0 +1,25 @@
+<div *ngIf="movie">
+    <h2>Titre :</h2> {{ movie.title }}
+    <h2>Budget :</h2> {{ movie.budget }} euros
+    <h2>Durée :</h2> {{ movie.duration }} minutes
+    <h2>Bénéfice :</h2> {{ movie.grossing }} euros
+    <h2>Catégorie :</h2> {{ movie.category.name }}
+    <h2>Date de sortie :</h2> {{ movie.releaseDate }}
+    <h2>Réalisateur :</h2> {{ movie.director.firstName }} {{ movie.director.name }}
+    <span>
+        <table class="table table-striped">
+        <thead>
+            <tr>
+            <th>Personnage</th>
+            <th>Acteur</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr *ngFor="let character of characters" >
+            <td>{{ character.name }}</td>
+            <td>{{ character.actor.firstName }} {{ character.actor.name }}</td>
+            </tr>
+        </tbody>
+        </table>
+    </span>
+</div>

@@ -35,7 +35,7 @@ export class FormDirectorComponent implements OnInit {
             let url = 'http://localhost:8080/cinema/api/director/';
             this.http.post(url, {},{ params }
             ).subscribe(
-                res => alert("Ajout avec succés"), 
+                res => { alert("Ajout avec succés"); this.init(); }, 
                 msg=>alert("L'ajout n'a pas marché")
             );
         }else{
@@ -53,6 +53,10 @@ export class FormDirectorComponent implements OnInit {
             || this.director.firstName == ""
             || this.director.name == undefined
             || this.director.name == ""
+    }
+
+    init(): void{
+        this.director = new Director();
     }
 }
 

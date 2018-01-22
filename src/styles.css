@@ -1,4 +1,32 @@
 /* You can add global styles to this file, and also import other style files */
 footer{
     text-align: center;
+    color: white;
+}
+
+body{
+    background-image: url('assets/img/Leon.png');
+    background-repeat: no-repeat;
+    background-size: 100%;
+    background-color: black;
+}
+
+
+
+h2{
+    color: white !important;
+}
+
+tr{
+    color: black;
+}
+
+tr:nth-child(even) {
+    background-color: lightgray !important;
+    opacity: 0.7;
+}
+
+tr:nth-child(odd) {
+    background-color: grey !important;
+    opacity: 0.7;
 }

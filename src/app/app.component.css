@@ -45,3 +45,19 @@
     margin-right: .8em;
     border-radius: 4px 0 0 4px;
   }
+
+  nav{
+    background-color: goldenrod !important;
+
+    -webkit-animation-name: changeColor;
+    /* -webkit-animation-name: blackWhiteFade; */
+    -webkit-animation-iteration-count: infinite;  
+    -webkit-animation-duration: 0.5s; 
+  }
+
+  @-webkit-keyframes changeColor {  
+    0% { background-color: black; }
+    50% { background-color:  black;}
+    51% { background-color:  goldenrod !important;}
+    100% { background-color: goldenrod !important; }
+  }

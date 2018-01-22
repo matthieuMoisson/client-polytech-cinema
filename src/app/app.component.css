@@ -49,10 +49,10 @@
   nav{
     background-color: linear-gradient(to right, red,orange,yellow,green,blue,indigo,violet) !important;
 
-    -webkit-animation-name: changeColor;
+    -webkit-animation-name: changeColorBis;
     /* -webkit-animation-name: blackWhiteFade; */
     -webkit-animation-iteration-count: infinite;  
-    -webkit-animation-duration: 0.5s; 
+    -webkit-animation-duration: 0.9s; 
   }
 
   @-webkit-keyframes changeColor {  
@@ -63,4 +63,22 @@
     70% { background: linear-gradient(to right,green,blue, indigo, violet, red,orange,yellow); }
     85% { background: linear-gradient(to right,yellow,green,blue, indigo, violet, red,orange); }
     100% { background: linear-gradient(to right,orange,yellow, green,blue, indigo, violet, red); }
+  }
+
+  @-webkit-keyframes changeColorBis {  
+    0% { background: radial-gradient(red 0%, yellow 50%, orange 60%);  }
+    7% { background: radial-gradient(red 10%, yellow 60%, orange 70%);  }
+    14% { background: radial-gradient(red 20%, yellow 70%, orange 80%);  }
+    21% { background: radial-gradient(red 30%, yellow 80%, orange 90%);  }
+    28% { background: radial-gradient(red 40%, yellow 90%, orange 100%);  }
+    35% { background: radial-gradient(orange 0%, red 50%, yellow 60%);  }
+    42% { background: radial-gradient(orange 10%, red 60%, yellow 70%);  }
+    49% { background: radial-gradient(orange 20%, red 70%, yellow 80%);  }
+    56% { background: radial-gradient(orange 30%, red 80%, yellow 90%);  }
+    63% { background: radial-gradient(orange 40%, red 90%, yellow 100%);  }
+    70% { background: radial-gradient(yellow 0%,orange 50%, red 60%);  } 
+    77% { background: radial-gradient(yellow 10%,orange 60%, red 70%);  } 
+    85% { background: radial-gradient(yellow 20%,orange 70%, red 80%);  } 
+    93% { background: radial-gradient(yellow 30%,orange 80%, red 90%);  } 
+    100% { background: radial-gradient(yellow 40%,orange 90%, red 100%);  }    
   }

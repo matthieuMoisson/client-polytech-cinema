@@ -1,12 +1,16 @@
 <div *ngIf="movie">
+    <hr>
     <h2>{{ movie.title }}</h2> 
-    <h3>{{ movie.budget }} euros de budget</h3>
-    <h3>Durée : {{ movie.duration }} minutes</h3>
-    <h3>{{ movie.grossing }} euros de bénéfice :</h3> 
-    <h3>Catégorie : {{ movie.category.name }}</h3> 
-    <h3>Date de sortie : {{ movie.releaseDate }}</h3> 
-    <h3>Réalisateur : {{ movie.director.firstName }} {{ movie.director.name }}</h3> 
+    <hr>
+    <h5>{{ movie.budget }} euros de budget</h5>
+    <h5>Durée : {{ movie.duration }} minutes</h5>
+    <h5>{{ movie.grossing }} euros de bénéfice</h5> 
+    <h5>Catégorie : {{ movie.category.name }}</h5> 
+    <h5>Date de sortie : {{ movie.releaseDate }}</h5> 
+    <h5>Réalisateur : {{ movie.director.firstName }} {{ movie.director.name }}</h5> 
+    <hr>
     <h2>Liste des personnages/acteurs : </h2>
+    <hr>
     <span>
         <table class="table table-striped">
         <thead>

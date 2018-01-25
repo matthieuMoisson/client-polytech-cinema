@@ -1,6 +1,8 @@
 <div *ngIf="actor">
+    <hr>
     <h2>{{ actor.firstName }} {{ actor.name }}</h2>
-    <h3>Anniversaire : {{ actor.birthday }} </h3> 
-    <h3 *ngIf="actor.deathDate">Date de mort : {{ actor.deathDate }}</h3> 
-    <h3 *ngIf="!actor.deathDate">Encore vivant</h3> 
+    <hr>
+    <h5>Anniversaire : {{ actor.birthday }} </h5> 
+    <h5 *ngIf="actor.deathDate">Date de mort : {{ actor.deathDate }}</h5> 
+    <h5 *ngIf="!actor.deathDate">Encore vivant</h5> 
 </div>

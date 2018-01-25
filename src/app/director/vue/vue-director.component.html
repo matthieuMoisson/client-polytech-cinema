@@ -1,6 +1,26 @@
-<div *ngIf="actor">
-    <h2>Nom :</h2> {{ actor.name }}
-    <h2>Prénom :</h2> {{ actor.firstName }} euros
-    <h2>Anniversaire :</h2> {{ actor.birthday }} 
-    <h2>Date de mort :</h2> {{ actor.deathDate }}
+<div *ngIf="director">
+    <hr>
+    <h2>{{ director.firstName }} {{ director.name }}</h2> 
+    <hr>
+    <hr>
+    <h2>Liste des filmes réalisés : </h2>
+    <hr>
+    <span>
+        <table class="table table-striped">
+        <thead>
+            <tr>
+                <th>Titre</th>
+                <th>Date</th>
+                <th>Categorie</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr *ngFor="let movie of movies" >
+            <td>{{ movie.title }}</td>
+            <td>{{ movie.releaseDate }}</td>
+            <td>{{ movie.category.name }}</td>
+            </tr>
+        </tbody>
+        </table>
+    </span>
 </div>

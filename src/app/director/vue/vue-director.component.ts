@@ -1,22 +1,21 @@
 import {Component, Input, OnInit} from '@angular/core';
 import {NgbModal, NgbActiveModal} from '@ng-bootstrap/ng-bootstrap';
 import { HttpClient } from '@angular/common/http';
-import {Actor} from '../actor';
 
 import { Movie } from '../../movie/movie';
-
+import { Director } from '../director';
 
 @Component({
-    selector: 'vue-actor-root',
-    templateUrl:'./vue-actor.component.html',
-    styleUrls: ['./vue-actor.component.css']
+    selector: 'vue-director-root',
+    templateUrl:'./vue-director.component.html',
+    styleUrls: ['./vue-director.component.css']
 })
 
 
-export class VueActorComponent implements OnInit{
+export class VueDirectorComponent implements OnInit{
   @Input() id;
-  actor: Actor;
   movies: Movie[];
+  director: Director;
   constructor(private http: HttpClient, public activeModal: NgbActiveModal) {
   }
 
@@ -26,9 +25,14 @@ export class VueActorComponent implements OnInit{
   }  
 
   load(): void {
-    const url = 'http://localhost:8080/cinema/api/actor/' + this.id;
-    this.http.get(url).subscribe((actor: Actor)  => {
-      this.actor = actor;
+    const url = 'http://localhost:8080/cinema/api/director/' + this.id;
+    this.http.get(url).subscribe((director: Director)  => {
+      this.director = director;
+    });
+
+    const urlCharacter = 'http://localhost:8080/cinema/api/film/director/' + this.id;
+    this.http.get(urlCharacter).subscribe((movies: Movie[])  => {
+      this.movies = movies;
     });
   }
 }

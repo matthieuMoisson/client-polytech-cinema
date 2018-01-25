@@ -5,9 +5,9 @@ import 'rxjs/add/operator/map'
 import {Director} from '../director';
 
 import {NgbModal, NgbActiveModal} from '@ng-bootstrap/ng-bootstrap';
-
 import { NgbdModalContent } from '../../ngbd-modal-content';
 
+import { VueDirectorComponent } from '../vue/vue-director.component';
 import { filterByDirector } from '../../pipes/pipes';
 
 @Component({
@@ -62,6 +62,11 @@ export class ListDirectorComponent implements OnInit{
     this.http.get(url).subscribe((directors: Director[])  => {
       this.directors = directors;
     });
+  }
+
+  voir(id) {
+    const modalRef = this.modalService.open(VueDirectorComponent);
+    modalRef.componentInstance.id = id;
   }
 }
 

@@ -12,6 +12,7 @@ import { ListMovieComponent } from './movie/list/list-movie.component';
 import { FormMovieComponent } from './movie/form/form-movie.component';
 import { VueMovieComponent } from './movie/vue/vue-movie.component';
 import { VueActorComponent } from './actor/vue/vue-actor.component';
+import { VueDirectorComponent } from './director/vue/vue-director.component';
 
 import { ListActorComponent } from './actor/list/list-actor.component';
 import { FormActorComponent } from './actor/form/form-actor.component';
@@ -40,7 +41,7 @@ import { filterMovie, filterByActor, filterByDirector, filterByCategory, filterB
     AppComponent,
     NgbdModalContent,
 
-    VueMovieComponent, VueActorComponent,
+    VueMovieComponent, VueActorComponent, VueDirectorComponent,
 
     ListMovieComponent,
     FormMovieComponent,
@@ -61,6 +62,6 @@ import { filterMovie, filterByActor, filterByDirector, filterByCategory, filterB
   ],
   providers: [ ],
   bootstrap: [ AppComponent ],
-  entryComponents:[ NgbdModalContent, VueMovieComponent, VueActorComponent]
+  entryComponents:[ NgbdModalContent, VueMovieComponent, VueActorComponent, VueDirectorComponent]
 })
 export class AppModule { }

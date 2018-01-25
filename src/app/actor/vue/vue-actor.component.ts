@@ -1,10 +1,10 @@
 import {Component, Input, OnInit} from '@angular/core';
 import {NgbModal, NgbActiveModal} from '@ng-bootstrap/ng-bootstrap';
 import { HttpClient } from '@angular/common/http';
-import {Actor} from '../actor';
+import { Actor } from '../actor';
 
 import { Movie } from '../../movie/movie';
-
+import { Action } from 'rxjs/scheduler/Action';
 
 @Component({
     selector: 'vue-actor-root',
@@ -15,7 +15,7 @@ import { Movie } from '../../movie/movie';
 
 export class VueActorComponent implements OnInit{
   @Input() id;
-  actor: Actor;
+  actor: Actor = new Actor();
   movies: Movie[];
   constructor(private http: HttpClient, public activeModal: NgbActiveModal) {
   }

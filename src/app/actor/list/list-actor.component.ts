@@ -10,6 +10,9 @@ import {filterByActor} from '../../pipes/pipes';
 
 import { NgbdModalContent } from '../../ngbd-modal-content';
 
+import { VueActorComponent } from '../vue/vue-actor.component';
+
+
 @Component({
     selector: 'list-actor-root',
     templateUrl: './list-actor.component.html',
@@ -65,6 +68,11 @@ export class ListActorComponent implements OnInit {
           this.actors[i].show = true;
         }
       });
+    }
+
+    voir(id) {
+      const modalRef = this.modalService.open(VueActorComponent);
+      modalRef.componentInstance.id = id;
     }
 }
 

@@ -8,6 +8,8 @@ import {NgbModal, NgbActiveModal} from '@ng-bootstrap/ng-bootstrap';
 
 import { NgbdModalContent } from '../../ngbd-modal-content';
 
+import { filterByCharacter } from '../../pipes/pipes';
+
 @Component({
     selector: 'list-character-root',
     templateUrl:'./list-character.component.html',
@@ -17,6 +19,10 @@ import { NgbdModalContent } from '../../ngbd-modal-content';
 
 export class ListCharacterComponent implements OnInit{
   characters: Character[];
+
+  name: string = "";
+  nameActor: string = "";
+  nameMovie: string = "";
 
   constructor(private http: HttpClient, private modalService: NgbModal) {
     

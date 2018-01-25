@@ -9,10 +9,6 @@ export class Character {
     name: string;
     film: Movie;
     actor: Actor;
-
-    /*
-    get id(){
-        return this.idFilm;
-    }
-    */
+    
+    show: boolean;
 }

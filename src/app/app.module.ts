@@ -24,7 +24,7 @@ import { FormCharacterComponent } from './character/form/form-character.componen
 import { ListCategoryComponent } from './category/list/list-category.component';
 import { FormCategoryComponent } from './category/form/form-category.component';
 
-import { filterMovie, filterByActor } from './pipes/pipes';
+import { filterMovie, filterByActor, filterByDirector, filterByCategory, filterByCharacter } from './pipes/pipes';
 
 
 
@@ -56,7 +56,7 @@ import { filterMovie, filterByActor } from './pipes/pipes';
     ListCategoryComponent,
     FormCategoryComponent,
 
-    filterMovie, filterByActor,
+    filterMovie, filterByActor, filterByDirector, filterByCategory, filterByCharacter
   ],
   providers: [ ],
   bootstrap: [ AppComponent ],

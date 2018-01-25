@@ -1,9 +1,20 @@
-<div class="container">
-  <h2>Liste des directeurs de film
-    <button type="button" class="btn btn-primary" (click)="load()">
-      <i class="fa fa-refresh" aria-hidden="true"></i>
-    </button>  
-  </h2>          
+<div class="container">  
+  <div class="form-group row">
+    <h2 class="col-6">
+      Liste des directeurs de film
+      <button type="button" class="btn btn-primary" (click)="load()">
+        <i class="fa fa-refresh" aria-hidden="true"></i>
+      </button>
+    </h2>   
+    <div class="col-2"></div>
+    <div class="col-2">
+        <input class="form-control" type="text" [(ngModel)]="firstName" id="example-text-input" placeholder="Prénom du directeur">
+    </div>
+    <div class="col-2">
+        <input class="form-control" type="text" [(ngModel)]="name" id="example-text-input" placeholder="Nom du directeur">
+    </div>
+  </div>  
+
   <table class="table table-striped">
     <thead>
       <tr>
@@ -13,10 +24,10 @@
       </tr>
     </thead>
     <tbody>
-      <tr *ngFor="let director of directors">
-        <td>{{director.firstName}}</td>
-        <td>{{director.name}}</td>
-        <td>
+      <tr *ngFor="let director of directors | filterByDirector : name : firstName">
+        <td *ngIf="director.show">{{director.firstName}}</td>
+        <td *ngIf="director.show">{{director.name}}</td>
+        <td *ngIf="director.show">
             <a class="btn btn-primary" href="#" role="button" (click)="edit(director.id)">
                 <i class="fa fa-pencil-square-o" aria-hidden="true"></i>
             </a>

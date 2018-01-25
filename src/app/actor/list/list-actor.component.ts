@@ -6,7 +6,7 @@ import {Actor} from '../actor';
 
 import {NgbModal, NgbActiveModal} from '@ng-bootstrap/ng-bootstrap';
 
-import {filterByActor} from '../../pipes/pipes'
+import {filterByActor} from '../../pipes/pipes';
 
 import { NgbdModalContent } from '../../ngbd-modal-content';
 

@@ -8,6 +8,8 @@ import {NgbModal, NgbActiveModal} from '@ng-bootstrap/ng-bootstrap';
 
 import { NgbdModalContent } from '../../ngbd-modal-content';
 
+import { filterByCategory } from '../../pipes/pipes';
+
 @Component({
     selector: 'list-category-root',
     templateUrl:'./list-category.component.html',
@@ -18,6 +20,8 @@ import { NgbdModalContent } from '../../ngbd-modal-content';
 export class ListCategoryComponent implements OnInit{
   categorys: Category[];
 
+  code : String = "";
+  name : String = "";
   constructor(private http: HttpClient, private modalService: NgbModal) {
     
   }

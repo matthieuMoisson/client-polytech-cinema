@@ -8,6 +8,8 @@ import {NgbModal, NgbActiveModal} from '@ng-bootstrap/ng-bootstrap';
 
 import { NgbdModalContent } from '../../ngbd-modal-content';
 
+import { filterByDirector } from '../../pipes/pipes';
+
 @Component({
     selector: 'list-director-root',
     templateUrl:'./list-director.component.html',
@@ -17,6 +19,8 @@ import { NgbdModalContent } from '../../ngbd-modal-content';
 
 export class ListDirectorComponent implements OnInit{
   directors: Director[];
+  name: string = "";
+  firstName: string = "";
 
   constructor(private http: HttpClient, private modalService: NgbModal) {
     

@@ -1,9 +1,20 @@
-<div class="container">
-  <h2>Liste des categories
-  <button type="button" class="btn btn-primary" (click)="load()">
-    <i class="fa fa-refresh" aria-hidden="true"></i>
-  </button>  
-  </h2>          
+<div class="container">  
+  <div class="form-group row">
+    <h2 class="col-6">
+      Liste des categories
+      <button type="button" class="btn btn-primary" (click)="load()">
+        <i class="fa fa-refresh" aria-hidden="true"></i>
+      </button>
+    </h2>   
+    <div class="col-2"></div>
+    <div class="col-2">
+        <input class="form-control" type="text" [(ngModel)]="code" id="example-text-input" placeholder="Code catégories">
+    </div>
+    <div class="col-2">
+        <input class="form-control" type="text" [(ngModel)]="name" id="example-text-input" placeholder="Nom de la catégorie">
+    </div>
+  </div>  
+
   <table class="table table-striped">
     <thead>
       <tr>
@@ -13,10 +24,10 @@
       </tr>
     </thead>
     <tbody>
-      <tr *ngFor="let category of categorys">
-        <td>{{category.code}}</td>
-        <td>{{category.name}}</td>
-        <td>
+      <tr *ngFor="let category of categorys | filterByCategory : name : code">
+        <td *ngIf="category.show">{{category.code}}</td>
+        <td *ngIf="category.show">{{category.name}}</td>
+        <td *ngIf="category.show">
             <a class="btn btn-primary" href="#" role="button" (click)="edit(category.code)">
                 <i class="fa fa-pencil-square-o" aria-hidden="true"></i>
             </a>

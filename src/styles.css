@@ -23,10 +23,10 @@ tr{
 
 tr:nth-child(even) {
     background-color: lightgray !important;
-    opacity: 0.7;
+    opacity: 0.8;
 }
 
 tr:nth-child(odd) {
     background-color: grey !important;
-    opacity: 0.7;
+    opacity: 0.8;
 }
